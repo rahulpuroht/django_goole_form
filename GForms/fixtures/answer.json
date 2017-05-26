@@ -1,0 +1,29 @@
+[
+  {
+    "model": "GForms.AnswerType",
+    "pk": 1,
+    "fields": {
+      "answere_type": "MCQ Single Answer"
+    }
+  },
+  {
+    "model": "GForms.AnswerType",
+    "pk": 2,
+    "fields": {
+      "answere_type": "MCQ Multiple Answer"
+    }
+  },
+  {
+    "model": "GForms.AnswerType",
+    "pk": 3,
+    "fields": {
+      "answere_type": "Boolean Answer"
+    }
+  },
+  {
+    "model": "GForms.AnswerType",
+    "pk": 4,
+    "fields": {
+      "answere_type": "Simple Answer"
+    }
+  }]

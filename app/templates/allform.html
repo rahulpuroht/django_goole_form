@@ -1,0 +1,45 @@
+<div class="top-servicew home-page xs-cus-home">
+   <div class="container">
+      <div class="row" style="margin-top: 65px" >
+         <div class="col-md-4">
+            <div ng-repeat='form in all_forms'>
+               <md-button class="md-raised md-green" style='width: 100%' ng-click='form_Select(form)'>{{form.form_name}}</md-button>
+            </div>
+         </div>
+         <div class="col-md-8" ng-show='form_det.length'>
+               <div ng-repeat='ques in form_det'>
+                  <div class="form-group">Question : {{ques.question}}</div>
+                  <div class="form-group">
+                     Answer : 
+                     <md-radio-group ng-model='single' ng-show='ques.answer_type=="1"' ng-change='selectedResponse(ques,single)'>
+                        <div class="radio-btn">
+                           <md-radio-button value='A'>A</md-radio-button>
+                           <md-radio-button value='B'>B </md-radio-button>
+                           <md-radio-button value='C'>C</md-radio-button>
+                           <md-radio-button value='D'>D</md-radio-button>
+                        </div>
+                     </md-radio-group>
+                     <div class="demo-select-all-checkboxes" flex="100" ng-show='ques.answer_type=="2"' ng-repeat="item in items" >
+                        <md-checkbox ng-checked="exists(item, selected)" ng-click="toggle(item, selected,ques)" ng-model='multiple'>
+                           {{item}}
+                        </md-checkbox>
+                     </div>
+                     <md-radio-group ng-model='boolean' ng-show='ques.answer_type=="3"' ng-change='selectedResponse(ques,boolean)'>
+                        <div class="radio-btn">
+                           <md-radio-button value='A'>True</md-radio-button>
+                           <md-radio-button value='B'>False </md-radio-button>
+                        </div>
+                     </md-radio-group>
+                     <div class="form-group" ng-show='ques.answer_type=="4"' >
+                        <input type="text" class="form-control" placeholder="Short answer text" ng-model='text' ng-change='selectedResponse(ques,text)'/>
+                     </div>
+                  </div>
+            
+               </div>
+               <div class="logsign-btn signup-logins text-center" ng-click='save_response()'>
+               <a href="">Save</a>              
+            </div>
+            </div>
+         </div>
+   </div>
+</div>

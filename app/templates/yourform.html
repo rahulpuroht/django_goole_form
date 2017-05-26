@@ -1,0 +1,43 @@
+<div class="top-servicew home-page xs-cus-home">
+   <div class="container">
+      <div class="row" style="margin-top: 65px" >
+         <div class="col-md-3">
+            <div ng-repeat='form in your_forms'>
+               <md-button class="md-raised md-green" style='width: 100%' ng-click='form_Select(form)'>Form: {{form.form_name}} </md-button>
+            </div>
+         </div>
+         <div class="col-md-3" ng-show='form_res.length'>
+            <div ng-repeat='form_r in form_res'>
+               <md-button class="md-raised md-green" style='width: 100%' ng-click='response_Select(form_r)'>Response: {{form_r.id}}</md-button>
+            </div>
+         </div>
+         <div class="col-md-6">
+               <div ng-repeat='ques in response_sel'>
+                  <div class="form-group">Question : {{ques.question}}</div>
+                  <div class="form-group">
+                     Answer : 
+                     <md-radio-group ng-if='ques.answer_type=="1"' ng-model='ques.answere' >
+                        <div class="radio-btn" ng-repeat="item in items">
+                           <md-radio-button ng-value='item'>{{item}}</md-radio-button>
+                        </div>
+                     </md-radio-group>
+                     <div class="demo-select-all-checkboxes" flex="100" ng-if='ques.answer_type=="2"' ng-repeat="item in items">
+                        <md-checkbox  ng-checked="exists(item, selected)" ng-click="toggle(item, selected)">
+                           {{item}}
+                        </md-checkbox>
+                     </div>
+                     <md-radio-group ng-if='ques.answer_type=="3"' ng-model='ques.answere' >
+                        <div class="radio-btn">
+                           <md-radio-button ng-value='A'>True</md-radio-button>
+                           <md-radio-button ng-value='B'>False </md-radio-button>
+                        </div>
+                     </md-radio-group>
+                     <div class="form-group" ng-if='ques.answer_type=="4"'>
+                        <input type="text" class="form-control" placeholder="Short answer text" value='{{ques.answere}}' />
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+   </div>
+</div>

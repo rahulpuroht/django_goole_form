@@ -1,0 +1,106 @@
+<div class="top-servicew home-page xs-cus-home">
+   <div class="container">
+      <div class="row" style="height: 50px;margin-top: 65px" ng-show='app.isLogin' ng-click='form=true'>
+         <md-button class="md-raised md-green" style='padding: 0px 35px ! important;'>Add Forms</md-button>
+      </div>
+      <div class="row" style="margin-top: 25px" ng-show='form'>
+         <form>
+            <div class="form-group">
+            	<label for="form_name">Form Name</label>
+               <input type="text" class="form-control" ng-model="obj.form_name">
+               <span class='span-color' ng-if="obj.form_nameErr!=null">{{obj.form_nameErr}}</span>
+            </div>
+            <div class="form-group">
+               
+               <label for="form_description">Description</label>
+               <textarea type="text" class="form-control" ng-model="obj.form_description"/>
+               <span class='span-color' ng-if="obj.form_descriptionErr!=null">{{obj.form_descriptionErr}}</span>
+            </div>
+            <div layout="row" layout-align="center center" style="padding-top:20px;">
+               <span class='span-color' ng-if="obj.failureErr!=null">{{obj.failureErr}}</span>
+            </div>
+            <div class="logsign-btn signup-logins text-center" ng-click='save_form()'>
+               <a href="">Save</a>              
+            </div>
+         </form>
+      </div>
+      <div class="row" style="margin-top: 25px" ng-show='question_Array.length' ng-repeat='question in question_Array'>
+            <div class="form-group">Question : {{question.question}}</div>
+            <div class="form-group">Answer : 
+            <md-radio-group ng-model='boolean' ng-show='question.answer_type=="1"'>
+               <div class="radio-btn">
+                  <md-radio-button value='A'>A</md-radio-button>
+                  <md-radio-button value='B'>B </md-radio-button>
+                  <md-radio-button value='C'>C</md-radio-button>
+                  <md-radio-button value='D'>D</md-radio-button>
+               </div>
+            </md-radio-group>
+            <div class="demo-select-all-checkboxes" flex="100" ng-show='question.answer_type=="2"' ng-repeat="item in items">
+               <md-checkbox ng-checked="exists(item, selected)" ng-click="toggle(item, selected)">
+                  {{ item }}
+               </md-checkbox>
+            </div>
+            <md-radio-group ng-model='boolean' ng-show='question.answer_type=="3"'>
+               <div class="radio-btn">
+                  <md-radio-button value='A'>True</md-radio-button>
+                  <md-radio-button value='B'>False </md-radio-button>
+               </div>
+            </md-radio-group>
+            <div class="form-group" ng-show='question.answer_type=="4"'>
+               <input type="text" class="form-control" placeholder="Short answer text" />
+            </div>
+        </div>
+      </div>
+      <div class="row" style="margin-top: 25px" ng-show='obj.form_question'>
+         <div class="row" style="height: 50px;margin-top: 20px" ng-click='question=true'>
+            <md-button class="md-raised md-green" style='padding: 0px 35px ! important;'>Add Question</md-button>
+         </div>
+         <form ng-show='question'>
+            <div layout-wrap layout-gt-sm="row">
+               <md-input-container md-no-float class="md-block" flex-gt-sm="60">
+                  <div class="label-hdng">Question</div>
+                  <input ng-model="obj.question"  id="question">
+                  <span class="span-color" ng-if="business.questionErr!=null">{{business.questionErr}}</span>
+               </md-input-container>
+               <md-input-container md-no-float class="md-block m-r-10" flex-gt-sm="30">
+                  <div class="label-hdng">Type of Question</div>
+                  <md-select class="arrow-down select-a2"  ng-model="obj.type">
+                     <md-option selected value="{{ans.id}}" ng-repeat='ans in app.answer_type track by $index'>{{ans.answere_type}}</md-option>
+                  </md-select>
+                  <span class="span-color" ng-if="business.stateErr!=null">{{business.stateErr}}</span>
+               </md-input-container>
+            </div>
+            <md-radio-group ng-model='boolean' ng-show='obj.type=="1"'>
+               <div class="radio-btn">
+                  <md-radio-button value='A'>A</md-radio-button>
+                  <md-radio-button value='B'>B </md-radio-button>
+                  <md-radio-button value='C'>C</md-radio-button>
+                  <md-radio-button value='D'>D</md-radio-button>
+               </div>
+            </md-radio-group>
+            <div class="demo-select-all-checkboxes" flex="100" ng-show='obj.type=="2"' ng-repeat="item in items">
+               <md-checkbox ng-checked="exists(item, selected)" ng-click="toggle(item, selected)">
+                  {{ item }}
+               </md-checkbox>
+            </div>
+            <md-radio-group ng-model='boolean' ng-show='obj.type=="3"'>
+               <div class="radio-btn">
+                  <md-radio-button value='A'>True</md-radio-button>
+                  <md-radio-button value='B'>False </md-radio-button>
+               </div>
+            </md-radio-group>
+            <div class="form-group" ng-show='obj.type=="4"'>
+               <input type="text" class="form-control" placeholder="Short answer text" />
+            </div>
+            
+            
+            <div layout="row" layout-align="center center" style="padding-top:20px;">
+               <span class='span-color' ng-if="obj.failureErr!=null">{{obj.failureErr}}</span>
+            </div>
+            <div class="logsign-btn signup-logins text-center" ng-click='save_question()'>
+               <a href="">Save</a>              
+            </div>
+         </form>
+      </div>
+   </div>
+</div>
